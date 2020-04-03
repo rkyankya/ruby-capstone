@@ -1,5 +1,3 @@
-
-
 require 'yaml'
 require 'grammarbot'
 require 'dotenv/load'
