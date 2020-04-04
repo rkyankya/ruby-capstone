@@ -34,6 +34,7 @@ From the command line:
 Go to the root folder of the project and execute:
 
    `$ cd ruby-capstone/`
+   
    `$ bundler`
 
 ### Execution
