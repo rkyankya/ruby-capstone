@@ -1,5 +1,7 @@
 Style/CapitalizedSubject:
   Enabled: true
+Layout/ValidGrammar:
+  Enabled: true
 Layout/SubjectLength:
   Enabled: true
 Metrics/BodyLength:
@@ -7,6 +9,4 @@ Metrics/BodyLength:
 Layout/ImperativeSubject:
   Enabled: true
 Layout/BodyRequired:
-  Enabled: true
-Layout/ValidGrammar:
   Enabled: true
