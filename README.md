@@ -34,7 +34,7 @@ From the command line:
 Go to the root folder of the project and execute:
 
    `$ cd ruby-capstone/`
-   
+
    `$ bundler`
 
 ### Execution
@@ -55,11 +55,11 @@ In the root folder of the project, execute the linter:
    
 Should be displayed the next output:
 
-![offenses](./assets/offenses.png)
+![offenses](./assets/offense.png)
 
 You can enable or disable the test validations in the .commicop.yml file in the root directory
 
-![validations](./assets/validations.png)
+![validations](./assets/validation.png)
 
 ## Author
 Feel free to reach out to me with any of the links below

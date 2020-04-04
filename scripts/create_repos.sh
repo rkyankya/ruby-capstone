@@ -15,7 +15,7 @@ git push
 touch file1.txt
 git add .
 git commit -F- <<EOF
-add capital case subject
+Add capital case subject
 
 body text ex
 EOF
