@@ -49,6 +49,8 @@ From the command line:
 ### Usage
 * Change the "test_file.js" to suit your needs
   Then run the executable file in your terminal :   ``` ./bin/main.rb ```
+  
+* [Link to video Usage](https://www.loom.com/share/41509cd67342429d9ce9506727f8305c)
 
 ### Run tests
 * This is an example in the .js file
