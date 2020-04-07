@@ -1,55 +1,106 @@
-require_relative '../lib/commicop.rb'
-require_relative '../lib/gitcommands.rb'
+require_relative '../lib/read.rb'
+require_relative '../lib/parse_js.rb'
 
-RSpec.describe Commicop do
-  include GitCommandsModule
-  let(:branch) { 'master' }
-  let(:git_dir) { ENV['DEFAULT_GIT_DIR'] }
-  let(:last_pushed_commit) { `git --git-dir #{git_dir} rev-parse origin/#{branch}`.chomp }
-  let(:command) { "git --git-dir #{git_dir} rev-list #{last_pushed_commit}..HEAD --abbrev-commit" }
-  let(:commits_list) { `#{command}`.chomp.split(/\n+/).reverse! }
-  let(:commicop) { Commicop.new(branch, git_dir) }
-  let(:non_existent_branch) { 'dvelop' }
+RSpec.describe JsParse do
+  # rubocop : disable Style/BlockDelimiters
+  let(:file_data) {
+    %(
+FirstName = 'John';
+last_Name = 'Doe';
 
-  let(:capitalized_subject_offenses) do
-    [{ err_code: 'Style/CapitalizedSubject', err_line: 'add capital case subject'\
-  '  body text ex', sha1: commits_list[0], sugesstion: 'Use capitalized message subjects' }]
+fullName = firstName+ lastName;
+
+var x = 5, y = 7;
+console.log\(x + y\);
+
+function isEven\(num\)\{
+  return  num % 2 == 0;
+
+
+function sum\(x, y\) \{
+  return x + y
+\}
+    )
+  }
+  # rubocop : enable Style/BlockDelimiters
+
+  let(:js_parse) { JsParse.new(file_data) }
+
+  describe '#lowercase_names?' do
+    it 'check if names indentifier starts with capital letter' do
+      expect(js_parse.lowercase_names?(file_data, 1)).to eql(true)
+    end
   end
 
-  let(:body_required_offenses) do
-    [{ err_code: 'Layout/BodyRequired',
-       err_line: 'Add subject too long...........................  body text ex',
-       sha1: commits_list[1],
-       sugesstion: 'Add a body message' }]
+  describe '#underscore_names?' do
+    it 'check if names indetifier has an underscore' do
+      expect(js_parse.underscore_names?(file_data, 2)).to eql(true)
+    end
   end
 
-  let(:imperative_subject_offenses) do
-    [{ err_code: 'Layout/ImperativeSubject', err_line: 'Subject without imperative verb'\
-   '  body text ex', sha1: commits_list[2], sugesstion: 'Use an standardized imperative verb for subject' }]
+  describe '#missing_semicolon?' do
+    it 'check if and statement end with a semicolon' do
+      expect(js_parse.missing_semicolon?(file_data, 14)).to eql(true)
+    end
   end
 
-  let(:subject_lenght_offenses) do
-    [{ err_code: 'Layout/SubjectLenght', err_line: 'Add subject length with more than 50 characters check...',
-       sha1: commits_list[3], sugesstion: 'Subject is too long [56/50]' }]
+  describe '#space_before_braces?' do
+    let(:my_method) do
+      proc do
+        js_parse.space_before_braces?(file_data, 9)
+      end
+    end
+
+    it 'check if there is a space before a brace' do
+      expect(my_method.call).to eql(true)
+    end
   end
 
-  let(:body_length_offenses) do
-    [{ err_code: 'Metrics/BodyLength', err_line: 'Subject without imperative verb  body text ex',
-       sha1: commits_list[4], sugesstion: 'Use an standardized imperative verb for subject' }]
+  describe '#space_end_line?' do
+    let(:my_method) do
+      proc do
+        js_parse.space_end_line?(file_data, 4)
+      end
+    end
+
+    it 'check if there is space at the end of a line' do
+      expect(my_method.call).to eql(true)
+    end
   end
 
-  let(:methods) do
-    [{ method: 'capitalized_subject', params: { 'Enabled' => true } },
-     { method: 'subject_length', params: { 'Enabled' => true } },
-     { method: 'body_length', params: { 'Enabled' => true } },
-     { method: 'imperative_subject', params: { 'Enabled' => true } },
-     { method: 'body_required', params: { 'Enabled' => true } },
-     { method: 'valid_grammar', params: { 'Enabled' => true } }]
+  describe '#space_in_line?' do
+    let(:my_method) do
+      proc do
+        js_parse.space_in_line?(file_data, 10)
+      end
+    end
+
+    it 'check if there is double space in a line' do
+      expect(my_method.call).to eql(true)
+    end
   end
 
-  describe '#initialize' do
-    it 'throws an NoBranchFoundError when is initialized with a non existent branch' do
-      expect { Commicop.new(non_existent_branch, git_dir) }.to raise_error(ErrorsModule::NoBranchFoundError)
+  describe '#spaces_around?' do
+    let(:my_method) do
+      proc do
+        js_parse.spaces_around?(file_data, 4)
+      end
+    end
+
+    it 'check if there is an space before and after an operator' do
+      expect(my_method.call).to eql(true)
+    end
+  end
+
+  describe '#check_braces' do
+    let(:my_method) do
+      proc do
+        js_parse.check_braces
+      end
+    end
+
+    it 'check if there is a missing openning or closing brace' do
+      expect(my_method.call).to eql(true)
     end
   end
 end

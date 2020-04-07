@@ -16,7 +16,7 @@
 The project description in from Microverse capstone projects on the Ruby section [Link to Description:](https://www.notion.so/Build-your-own-linter-b17a3c22f7b940c98ca1980250720769)
 
 ## Installation
-> This is a simple linter for ruby files and informs about formatting errors on local repos.
+> This is a simple linter for Javascript files and informs about formatting errors on local repos.
 ### Requirements
 
 - ruby > 2.6.x
@@ -55,7 +55,7 @@ In the root folder of the project, execute the linter:
    
 Should be displayed the next output:
 
-![offenses](./assets/offense.png)
+![offenses](./assets/offencese.png)
 
 You can enable or disable the test validations in the .commicop.yml file in the root directory
 
