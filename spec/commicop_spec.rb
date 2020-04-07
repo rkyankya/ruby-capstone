@@ -52,24 +52,4 @@ RSpec.describe Commicop do
       expect { Commicop.new(non_existent_branch, git_dir) }.to raise_error(ErrorsModule::NoBranchFoundError)
     end
   end
-
-  describe '#methods_to_check' do
-    it 'returns the methods not having the attribute "Enabled: false"' do
-      expect(commicop.methods_to_check).to eq(methods)
-    end
-  end
-
-  describe '#capitalized_subject' do
-    it 'loads into the offenses array all the commits where subject is not capitalized' do
-      commicop.capitalized_subject
-      expect(commicop.offenses).to eq(capitalized_subject_offenses)
-    end
-  end
-
-  describe '#imperative_subject' do
-    it 'checks the subjects without imperative verb' do
-      commicop.imperative_subject
-      expect(commicop.offenses).to eq(imperative_subject_offenses)
-    end
-  end
 end
