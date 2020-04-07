@@ -5,4 +5,4 @@ class ReadFile
     file.close
     content
   end
-  end
+end
