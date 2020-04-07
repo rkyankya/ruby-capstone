@@ -16,7 +16,7 @@
 The project description in from Microverse capstone projects on the Ruby section [Link to Description:](https://www.notion.so/Build-your-own-linter-b17a3c22f7b940c98ca1980250720769)
 
 ## Installation
-
+> This is a simple linter for ruby files and informs about formatting errors on local repos.
 ### Requirements
 
 - ruby > 2.6.x
@@ -39,9 +39,9 @@ Go to the root folder of the project and execute:
 
 ### Execution
 
-You have to select a branch and the git directory to run the linter:
+You have to select a local directory to run the linter:
 
-   `$ bin/main.rb master your_dir/.git`
+   `$ bin/main.rb `
     
 ### Example
 You can run the file scripts/create_repos.sh in order to create local repos to test the linter
@@ -51,7 +51,7 @@ You can run the file scripts/create_repos.sh in order to create local repos to t
 `$ scripts/create_repos.sh`
 
 In the root folder of the project, execute the linter:
-   ` $ bin/main.rb master /tmp/repo2/.git`
+   ` $ bin/main.rb`
    
 Should be displayed the next output:
 
