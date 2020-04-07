@@ -17,7 +17,12 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
-
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/ModuleLength:
+  Max: 103
 
 Style/Documentation:
   Enabled: false
@@ -31,6 +36,22 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+Style/CaseEquality:
+  Enabled: false
+Style/EachWithObject:
+  Enabled: false
+Style/HashEachMethods:
+  Enabled: false
+Style/HashTransformKeys:
+  Enabled: false
+Style/HashTransformValues:
+  Enabled: false
+
+
+Lint/StructNewOverride:
+  Enabled: false
+Lint/RaiseException:
+  Enabled: false
 
 Layout/HashAlignment:
   EnforcedColonStyle: key
