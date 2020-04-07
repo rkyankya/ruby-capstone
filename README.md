@@ -16,46 +16,51 @@
 The project description in from Microverse capstone projects on the Ruby section [Link to Description:](https://www.notion.so/Build-your-own-linter-b17a3c22f7b940c98ca1980250720769)
 
 ## Installation
-> This is a simple linter for Javascript files and informs about formatting errors on local repos.
+**To run this project yo have to have this repo on your computer**
+To get a local copy up and running follow these simple steps.
+
+This linter check the following standards in .js files: 
+* If find a capital letter in the indetifier names and recommend to use camelCase instead.
+* If find underscore in the indetifier names and recommend to use camelCase instead.
+* If there is a semicolon at the end.
+* If there are spaces around operators.
+* If there is a space before opening brace.
+* If find a space at the end of the line, send a message to remove it.
+* If find a double space in line, send a message to use one space.
+* And if there is a missing opening or closing brace.
+
 ### Requirements
 
 - ruby > 2.6.x
 - git > 2.x
 - bundler > 2.x
 
-### Steps
+### Setup
+
+Download or clone this repository to your machine.
+
+* To clone, go to "Clone or Download" and click on Download ZIP and extract the files to a folder in your computer
 
 From the command line:
 
    `$ git clone https://https://github.com/rkyankya/ruby-capstone.git`
 
-### Install dependecies
 
-Go to the root folder of the project and execute:
+### Usage
+* Change the "test_file.js" to suit your needs
+  Then run the executable file in your terminal :   ``` ./bin/main.rb ```
 
-   `$ cd ruby-capstone/`
+### Run tests
+* This is an example in the .js file
+```
+FirstName = 'John';
+last_Name = 'Doe';
 
-   `$ bundler`
-
-### Execution
-
-You have to select a local directory to run the linter:
-
-   `$ bin/main.rb `
-    
-### Example
-You can run the file scripts/create_repos.sh in order to create local repos to test the linter
-
-`$ chmod 755 scripts/create_repos.sh`
-
-`$ scripts/create_repos.sh`
-
-In the root folder of the project, execute the linter:
-   ` $ bin/main.rb`
-   
+fullName = firstName+ lastName; 
+``` 
 Should be displayed the next output:
 
-![offenses](./assets/offencese.png)
+![offenses](./assets/offences.png)
 
 You can enable or disable the test validations in the .commicop.yml file in the root directory
 
