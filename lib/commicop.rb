@@ -43,8 +43,8 @@ class Commicop
   end
 
   def capitalized_subject
-    sugesstion = 'Use capitalized message subjects'
-    err_code = 'Style/CapitalizedSubject'
+    sugesstion = 'Use capitalized message subjects'.freeze
+    err_code = 'Style/CapitalizedSubject'.freeze
 
     @unpushed_commits.each do |commit|
       git_commit = GitCommit.new(commit, @git_dir)
@@ -56,8 +56,8 @@ class Commicop
   end
 
   def imperative_subject
-    sugesstion = 'Use an standardized imperative verb for subject'
-    err_code = 'Layout/ImperativeSubject'
+    sugesstion = 'Use an standardized imperative verb for subject'.freeze
+    err_code = 'Layout/ImperativeSubject'.freeze
     imperative_verbs = %w[add update fix feat docs style refactor test chore]
 
     @unpushed_commits.each do |commit|
@@ -70,22 +70,22 @@ class Commicop
   end
 
   def subject_length
-    err_code = 'Layout/SubjectLenght'
-    sugesstion = ''
+    err_code = 'Layout/SubjectLenght'.freeze
+    sugesstion = ''.freeze
 
     @unpushed_commits.each do |commit|
       git_commit = GitCommit.new(commit, @git_dir)
 
       next unless git_commit.subject.size > 50
 
-      sugesstion = "Subject is too long [#{git_commit.subject.size}/50]"
+      sugesstion = "Subject is too long [#{git_commit.subject.size}/50]".freeze
 
       @offenses << { sha1: commit, err_code: err_code, sugesstion: sugesstion, err_line: git_commit.subject }
     end
   end
 
   def valid_grammar
-    err_code = 'Layout/ValidGrammar'
+    err_code = 'Layout/ValidGrammar'.freeze
     gbot = Grammarbot::Client.new(api_key: ENV['API_KEY'], language: 'en-US', base_uri: ENV['BASE_URI'])
 
     @unpushed_commits.each do |commit|
@@ -97,8 +97,8 @@ class Commicop
   end
 
   def body_required
-    sugesstion = 'Add a body message'
-    err_code = 'Layout/BodyRequired'
+    sugesstion = 'Add a body message'.freeze
+    err_code = 'Layout/BodyRequired'.freeze
 
     @unpushed_commits.each do |commit|
       git_commit = GitCommit.new(commit, @git_dir)
@@ -110,7 +110,7 @@ class Commicop
   end
 
   def body_length
-    err_code = 'Layout/BodyRequired'
+    err_code = 'Layout/BodyRequired'.freeze
 
     @unpushed_commits.each do |commit|
       git_commit = GitCommit.new(commit, @git_dir)

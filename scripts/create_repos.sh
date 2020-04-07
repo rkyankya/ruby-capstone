@@ -10,7 +10,7 @@ git clone repo1 repo2
 cd repo2
 echo 'ohai!' >> readme.txt
 git add readme.txt
-git commit -m"Initial commit"
+git commit -m "Initial commit"
 git push
 touch file1.txt
 git add .
