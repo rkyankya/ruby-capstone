@@ -1,5 +1,5 @@
-require_relative '../lib/read.rb'
-require_relative '../lib/parse.rb'
+require_relative '../lib/reader.rb'
+require_relative '../lib/validator.rb'
 
 RSpec.describe Parse do
   # rubocop : disable Style/BlockDelimiters
