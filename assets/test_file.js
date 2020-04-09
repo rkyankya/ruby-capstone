@@ -3,13 +3,7 @@ last_Name = 'Doe';
 
 fullName = firstName+ lastName; 
 
-var x = 5, y = 7;
-console.log(x + y);
-
-function isEven(num){
-  return  num % 2 == 0;
-
-
-function sum(x, y) {
-  return x + y
+function main() {
+  var myArray = [1,2,3,4,-6]
+  var result = KadaneAlgo(myArray)
 }

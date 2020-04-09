@@ -1,6 +1,6 @@
 require 'colorize'
 
-class JsParse
+class Parse
   attr_reader :arr
 
   def initialize(arr)
@@ -16,10 +16,24 @@ class JsParse
     true
   end
 
+  def space_in_line?(line, line_num)
+    return false unless /.+[\w]\s\s.+/.match(line)
+
+    puts 'ERROR: '.red + "line #{line_num}, check for double spaces."
+    true
+  end
+
   def underscore_names?(line, line_num)
     return false unless /_/.match(line)
 
     puts 'WARNING: '.yellow + "line #{line_num}, avoid underscore in names, use camelCase."
+    true
+  end
+
+  def space_end_line?(line, line_num)
+    return false unless /\s$/.match(line)
+
+    puts 'ERROR: '.red + "line #{line_num}, remove spaces at the end of the line."
     true
   end
 
@@ -34,20 +48,6 @@ class JsParse
     return false unless /\S\{/.match(line)
 
     puts 'ERROR: '.red + "line #{line_num}, missing space before open brace."
-    true
-  end
-
-  def space_in_line?(line, line_num)
-    return false unless /.+[\w]\s\s.+/.match(line)
-
-    puts 'ERROR: '.red + "line #{line_num}, check for double spaces."
-    true
-  end
-
-  def space_end_line?(line, line_num)
-    return false unless /\s$/.match(line)
-
-    puts 'ERROR: '.red + "line #{line_num}, remove spaces at the end of the line."
     true
   end
 
